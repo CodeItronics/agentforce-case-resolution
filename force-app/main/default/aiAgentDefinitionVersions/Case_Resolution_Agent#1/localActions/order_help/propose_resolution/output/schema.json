@@ -1,0 +1,46 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "allowedPaths" : {
+      "title" : "Allowed paths",
+      "description" : "Comma-separated paths the user may choose",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "outcome" : {
+      "title" : "Outcome",
+      "description" : "SUCCESS, NOT_FOUND or NOT_AUTHORIZED",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "policyVersion" : {
+      "title" : "Policy version",
+      "description" : "The policy version applied",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "reason" : {
+      "title" : "Reason",
+      "description" : "Why this path was recommended",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "recommendedPath" : {
+      "title" : "Recommended path",
+      "description" : "REPLACEMENT, REFUND_NEEDS_APPROVAL, INVESTIGATE_WITH_CARRIER or ESCALATE",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : false,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

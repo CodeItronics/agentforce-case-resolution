@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentDescription>Helps with damaged, late or missing orders: looks up the order, applies the approved policy, recommends a resolution and records requests for a person to approve.</agentDescription>
+    <agentType>AgentforceEmployeeAgent</agentType>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <type>InternalCopilot</type>
+</AiAgentDefinition>

@@ -1,0 +1,42 @@
+{
+  "required" : [ "orderNumber", "type", "reason", "idempotencyKey" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "amount" : {
+      "title" : "Amount",
+      "description" : "Refund amount; not more than the order total",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "idempotencyKey" : {
+      "title" : "Idempotency key",
+      "description" : "Order number and type, e.g. ORD-1001-Refund; reuse it for retries",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "orderNumber" : {
+      "title" : "Order number",
+      "description" : "The order number",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "reason" : {
+      "title" : "Reason",
+      "description" : "Short reason in the user's words",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "type" : {
+      "title" : "Type",
+      "description" : "Refund, Replacement or Escalation",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
