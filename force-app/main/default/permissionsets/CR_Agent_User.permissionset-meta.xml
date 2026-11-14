@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Case Resolution Agent User</label>
+    <description>What the Case Resolution agent may do on behalf of the signed-in user: read their own orders, create resolution requests.</description>
+    <classAccesses><apexClass>CR_GetOrderStatus</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>CR_GetPolicy</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>CR_ProposeResolution</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>CR_RequestResolution</apexClass><enabled>true</enabled></classAccesses>
+    <classAccesses><apexClass>CR_Support</apexClass><enabled>true</enabled></classAccesses>
+    <customMetadataTypeAccesses><enabled>true</enabled><name>CR_Policy__mdt</name></customMetadataTypeAccesses>
+    <fieldPermissions><editable>false</editable><field>CR_Order__c.Account__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>CR_Order__c.Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>CR_Order__c.Delivered_On__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>CR_Order__c.Total__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>false</editable><field>CR_Order__c.Product__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Order__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Case__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Type__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Status__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Amount__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Idempotency_Key__c</field><readable>true</readable></fieldPermissions>
+    <fieldPermissions><editable>true</editable><field>CR_Resolution_Request__c.Reason__c</field><readable>true</readable></fieldPermissions>
+    <objectPermissions><allowCreate>false</allowCreate><allowDelete>false</allowDelete><allowEdit>false</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>CR_Order__c</object><viewAllRecords>false</viewAllRecords></objectPermissions>
+    <objectPermissions><allowCreate>true</allowCreate><allowDelete>false</allowDelete><allowEdit>false</allowEdit><allowRead>true</allowRead><modifyAllRecords>false</modifyAllRecords><object>CR_Resolution_Request__c</object><viewAllRecords>false</viewAllRecords></objectPermissions>
+</PermissionSet>

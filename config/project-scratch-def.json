@@ -1,0 +1,10 @@
+{
+  "orgName": "CodeITronics Agentforce Case Resolution POC",
+  "edition": "Developer",
+  "features": ["Einstein1AIPlatform"],
+  "settings": {
+    "lightningExperienceSettings": { "enableS1DesktopEnabled": true },
+    "agentPlatformSettings": { "enableAgentPlatform": true },
+    "einsteinGptSettings": { "enableEinsteinGptPlatform": true }
+  }
+}

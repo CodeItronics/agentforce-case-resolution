@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Late Delivery v1</label>
+    <protected>false</protected>
+    <values><field>Category__c</field><value xsi:type="xsd:string">Late</value></values>
+    <values><field>Version__c</field><value xsi:type="xsd:string">v1</value></values>
+    <values><field>Claim_Window_Days__c</field><value xsi:type="xsd:double">14</value></values>
+    <values><field>Valid_Until__c</field><value xsi:type="xsd:date">2025-12-31</value></values>
+    <values><field>Policy_Text__c</field><value xsi:type="xsd:string">Orders more than 7 days late qualify for a shipping refund. (Expired policy, kept to test that the agent refuses to use it.)</value></values>
+</CustomMetadata>

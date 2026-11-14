@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Resolution Request</label>
+    <pluralLabel>Resolution Requests</pluralLabel>
+    <nameField><label>Request Number</label><type>AutoNumber</type><displayFormat>RR-{00000}</displayFormat></nameField>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <enableReports>true</enableReports>
+    <enableHistory>true</enableHistory>
+</CustomObject>
