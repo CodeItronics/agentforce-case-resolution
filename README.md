@@ -64,6 +64,24 @@ Agentforce scratch orgs.
 made-up one; a user without access is refused; an expired policy is never used; the resolution rules; refunds wait for
 approval and retries are safe; every action is audited.
 
+## CI
+
+`.github/workflows/ci.yml` runs on every pull request and on pushes to `main`:
+
+1. **Lint**: `prettier --check` on the Apex classes and triggers.
+2. **Apex tests**: signs in to a Dev Hub with a JWT connected app, creates a one-day scratch org from
+   `config/project-scratch-def.json`, deploys, runs `RunLocalTests` with coverage, then deletes the org.
+
+The Apex job is skipped until these are set (at the GitHub organisation level, so all three POC repos share them):
+
+| Name | Kind | Value |
+|------|------|-------|
+| `SF_DEVHUB_USERNAME` | variable | Dev Hub username |
+| `SF_CONSUMER_KEY` | secret | connected app consumer key |
+| `SF_JWT_KEY` | secret | private key (`server.key`) matching the app's certificate |
+
+Each run uses one scratch org slot while it runs, so it fails if every active slot is taken.
+
 ## License
 
 MIT

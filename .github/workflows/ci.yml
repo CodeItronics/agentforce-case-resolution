@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Only the formatter is needed, not the full LWC/jest toolchain in package.json.
+      # Apex only: plugin-xml's strict whitespace mode mangles metadata <description> tags.
+      - run: npm install --no-save --no-audit --no-fund prettier@3 prettier-plugin-apex@2 @prettier/plugin-xml@3
+      - run: npx prettier --check "force-app/**/*.{cls,trigger}"
+
+  apex-tests:
+    # Skipped until the Dev Hub JWT settings exist (org-level variable SF_DEVHUB_USERNAME + secrets below).
+    if: ${{ vars.SF_DEVHUB_USERNAME != '' }}
+    needs: lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      SF_DISABLE_TELEMETRY: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --global @salesforce/cli
+      - name: Authorise Dev Hub (JWT)
+        env:
+          SF_JWT_KEY: ${{ secrets.SF_JWT_KEY }}
+        run: |
+          printf '%s' "$SF_JWT_KEY" > server.key
+          sf org login jwt --username "${{ vars.SF_DEVHUB_USERNAME }}" --client-id "${{ secrets.SF_CONSUMER_KEY }}" --jwt-key-file server.key --set-default-dev-hub --alias devhub
+          rm server.key
+      - name: Create scratch org
+        run: sf org create scratch --definition-file config/project-scratch-def.json --alias ci --set-default --duration-days 1 --wait 20
+      - name: Deploy
+        run: sf project deploy start --target-org ci --wait 30
+      - name: Run Apex tests
+        run: sf apex run test --target-org ci --test-level RunLocalTests --code-coverage --result-format human --wait 30
+      - name: Delete scratch org
+        if: always()
+        run: sf org delete scratch --target-org ci --no-prompt || true
